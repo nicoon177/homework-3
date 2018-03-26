@@ -3,6 +3,7 @@ import data from './data';
 
 import MoreButton from './components/MoreButton';
 import PostList from "./components/PostList";
+import PostListItem from "./components/PostListItem";
 
 class App extends Component {
     constructor(props) {
@@ -23,12 +24,18 @@ class App extends Component {
     render() {
         return (
             <div>
-                <PostList count={this.state.countItems} />
+
+                <PostList data={getData}/>
                 <MoreButton onClick={this.handleChangeCount} />
-                <button onClick={this.handleChangeCount}>Load</button>
             </div>
         );
     }
 }
+
+const getData = data.map((item) => {
+    return (
+        <PostListItem key={item.id} body={item.body} title={item.title}/>
+    );
+});
 
 export default App;
