@@ -24,7 +24,7 @@ class App extends Component {
         return (
             <div>
                 <PostList count={this.state.countItems} />
-                <MoreButton coun={this.handleChangeCount} />
+                <MoreButton onClick={this.handleChangeCount} />
                 <button onClick={this.handleChangeCount}>Load</button>
             </div>
         );
