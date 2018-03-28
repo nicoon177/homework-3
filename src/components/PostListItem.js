@@ -10,4 +10,3 @@ const PostListItem = (props) => {
 };
 
 export default PostListItem;
-

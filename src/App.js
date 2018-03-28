@@ -14,33 +14,25 @@ class App extends Component {
         };
     }
 
-
     handleChangeCount = () => {
         this.setState({
             countItems: this.state.countItems + 10,
         })
     };
 
+    getPost = () => {
+        const listItem = data.reduce((acc, item, i) => (i < this.state.countItems) ? acc.concat(<PostListItem key={item.id} title={item.title} body={item.body}/>) : acc, []);
+        return listItem;
+    };
 
     render() {
         return (
             <div>
-                <PostList data={listItem} />
-                <MoreButton onClick={this.handleChangeCount} />
+                <PostList list={this.getPost} />
+                {(this.state.countItems < data.length) ? <MoreButton onClick={this.handleChangeCount} /> : ''}
             </div>
         );
     }
 }
-
-/*const getData = data.map((item) => {
-    return (
-        <PostListItem key={item.id} body={item.body} title={item.title}/>
-    );
-});*/
-
-const listItem = data.reduce((acc, item, i) => (i <= this.countItems) ? acc.concat(<PostListItem key={item.id} title={item.title} body={item.body} />) : acc, []);
-
-
-
 
 export default App;
